@@ -1,0 +1,47 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: red; */
+    height: 600px;
+}
+
+.back-button {
+    display: flex; 
+    justify-content: center;
+    width: 130px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 1px 1px 4px 2px rgb(216, 209, 209);
+    margin-top: 85px;
+    margin-left: 50px;
+    font-size: 15px;
+    color: #333;
+}
+
+.back-button img { 
+    height: 20px;
+    margin-right: 10px;
+}
+
+.home-info {
+    display: flex;
+    flex-direction: column;
+    padding: 200px;
+    list-style: none;
+}
+
+.home-info ul {
+    display: flex;
+}
+
+.border-countries {    
+    display: flex; 
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px 2px rgb(216, 209, 209);
+    height: 40px;
+    width: 100px;
+    list-style: none;
+}

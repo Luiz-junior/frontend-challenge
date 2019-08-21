@@ -1,0 +1,26 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    border-bottom: 2px;
+    box-shadow: 2px 2px 3px rgba(230, 226, 226, 0.77);
+}
+
+.header-container h2 {
+    margin-left: 7%;
+    color: #222;
+}
+
+.header-container div {
+    display: flex;
+    align-items: center;
+    margin-right: 7%;
+    color: #555;
+    font-size: 18px;
+}
+
+.header-container div img {
+    height: 15px;
+    margin-right: 10px;
+}

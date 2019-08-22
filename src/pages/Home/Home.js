@@ -13,7 +13,6 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.props)
         try {
             const response = await api.get(`/all`);
             this.setState({ countries: response.data, loading: false });    
@@ -21,24 +20,6 @@ class Home extends Component {
             this.setState({ error, loading: false });
         }
     }
-
-    renderCountries = countries => {
-        return countries.map((country, index) => {
-            return ( 
-                <div className="home-container" key={index}>
-                    <Link to={`/Details/${country.name}`} >
-                        <div className="card-countries">
-                            <img src={country.flag} />
-                            <h2>{country.name}</h2>
-                            <h4>Population: {country.population}</h4>
-                            <h4>Region: {country.region}</h4>
-                            <h4>Capital: {country.capital}</h4>
-                        </div>
-                    </Link>
-                </div> 
-            )
-        })
-    };
 
     searchCountry = async (e) => {
         const value = e.target.value;
@@ -59,6 +40,24 @@ class Home extends Component {
         } catch (error) {
             this.setState({ error, loading: false });
         }
+    };
+
+    renderCountries = countries => {
+        return countries.map((country, index) => {
+            return ( 
+                <div className="home-container" key={index}>
+                    <div className="card-countries">
+                        <Link to={`/Details/${country.name}`} >
+                            <img src={country.flag} />
+                        </Link>
+                        <h2>{country.name}</h2>
+                        <h4>Population: {country.population}</h4>
+                        <h4>Region: {country.region}</h4>
+                        <h4>Capital: {country.capital}</h4>
+                    </div>
+                </div> 
+            )
+        })
     };
 
     render() {

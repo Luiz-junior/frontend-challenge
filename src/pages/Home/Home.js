@@ -46,9 +46,20 @@ class Home extends Component {
         }
     };
 
+    searchByRegion = async (e) => {
+        const value = e.target.value;
+        console.log('value', value);
+        try {
+            const response = await api.get(`/region/${value}`);
+            this.setState({ countries: response.data, loading: false });    
+        } catch (error) {
+            this.setState({ error, loading: false });
+        }
+    };
+
     render() {
         const { countries, loading, error } = this.state;
-        console.log(this.state.countries);
+        
         if(loading)
             return <h5>Carregando...</h5>
     
@@ -62,11 +73,12 @@ class Home extends Component {
                         onChange={(e) => this.searchCountry(e)}
                          />
                         
-                        <select value={countries} onChange={this.searchCountry} className="select-countries">
-                            { countries.map(country => (
-                                <option value={country.name}>{country.name}</option> 
-                            )) }
-                        </select>
+                        <select value={countries} onChange={this.searchByRegion} className="select-countries">
+                            <option value="africa">Africa</option>  
+                            <option value="asia">Asia</option>  
+                            <option value="europe">Europe</option>  
+                            <option value="oceania">Oceania</option>  
+                        </select> 
                 </div>
 
                 <div className="container">

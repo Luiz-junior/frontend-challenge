@@ -41,6 +41,7 @@
 }
 
 .details-info h1 {
+    font-family: 'Nunito Sans', sans-serif;
     color: #333;
     padding-left: 40px;
 }
@@ -87,7 +88,7 @@
     font-size: 14px;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 375px) {
     .details-container {
         flex-wrap: wrap;        
     }
@@ -120,6 +121,7 @@
 
     .border-container h4 {
         margin-left: 40px;
+        font-family: 'Nunito Sans', sans-serif;
     }
     
 }

@@ -15,7 +15,7 @@ class Home extends Component {
     async componentDidMount() {
         try {
             const response = await api.get(`/all`);
-            this.setState({ countries: response.data, loading: false });    
+            this.setState({ countries: response.data, loading: false });
         } catch (error) {
             this.setState({ error, loading: false });
         }
@@ -25,7 +25,7 @@ class Home extends Component {
         const value = e.target.value;
         try {
             const response = await api.get(`/name/${value}`);
-            this.setState({ countries: response.data, loading: false });    
+            this.setState({ countries: response.data, loading: false });
         } catch (error) {
             this.setState({ error, loading: false });
         }
@@ -36,7 +36,7 @@ class Home extends Component {
 
         try {
             const response = await api.get(`/region/${value}`);
-            this.setState({ countries: response.data, loading: false });    
+            this.setState({ countries: response.data, loading: false });
         } catch (error) {
             this.setState({ error, loading: false });
         }
@@ -44,48 +44,48 @@ class Home extends Component {
 
     renderCountries = countries => {
         return countries.map((country, index) => {
-            return ( 
+            return (
                 <div className="home-container" key={index}>
                     <div className="card-countries">
                         <Link to={`/Details/${country.name}`} >
                             <img src={country.flag} />
                         </Link>
-                        <h2>{country.name}</h2>
-                        <h4>Population: {country.population}</h4>
-                        <h4>Region: {country.region}</h4>
-                        <h4>Capital: {country.capital}</h4>
+                        <h2 id="label">{country.name}</h2>
+                        <h4 id="label">Population: {country.population}</h4>
+                        <h4 id="label">Region: {country.region}</h4>
+                        <h4 id="label">Capital: {country.capital}</h4>
                     </div>
-                </div> 
+                </div>
             )
         })
     };
 
     render() {
         const { countries, loading, error } = this.state;
-        
-        if(loading)
+
+        if (loading)
             return <h5>Carregando...</h5>
-    
+
         return (
-            <div className="main-container">
+            <div id="home-container">
                 <div className="input-container">
-                    <input 
-                        type="text" 
-                        placeholder="Search for a country" 
+                    <input
+                        type="text"
+                        placeholder="Search for a country"
                         className="input-countries"
                         onChange={(e) => this.searchCountry(e)}
-                         />
-                        
-                        <select value={countries} onChange={this.searchByRegion} className="select-countries">
-                            <option value="africa">Africa</option>  
-                            <option value="asia">Asia</option>  
-                            <option value="europe">Europe</option>  
-                            <option value="oceania">Oceania</option>  
-                        </select> 
+                    />
+
+                    <select value={countries} onChange={this.searchByRegion} className="select-countries">
+                        <option value="africa">Africa</option>
+                        <option value="asia">Asia</option>
+                        <option value="europe">Europe</option>
+                        <option value="oceania">Oceania</option>
+                    </select>
                 </div>
 
-                <div className="container" >
-                    { this.renderCountries(countries) }
+                <div className="countries-container" >
+                    {this.renderCountries(countries)}
                 </div>
             </div>
         );

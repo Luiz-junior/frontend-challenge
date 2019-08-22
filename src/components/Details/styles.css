@@ -1,14 +1,20 @@
 .details-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    /* background: red; */
     height: 600px;
+}
+
+.details-container img {
+    width: 550px;
+    margin-left: 70px;
 }
 
 .back-button {
     display: flex; 
     justify-content: center;
+    align-items: center;
+    text-decoration: none;
     width: 130px;
     height: 40px;
     border: none;
@@ -16,7 +22,7 @@
     background: #fff;
     box-shadow: 1px 1px 4px 2px rgb(216, 209, 209);
     margin-top: 85px;
-    margin-left: 50px;
+    margin-left: 70px;
     font-size: 15px;
     color: #333;
 }
@@ -26,14 +32,14 @@
     margin-right: 10px;
 }
 
-.home-info {
+.details-info {
     display: flex;
     flex-direction: column;
-    padding: 200px;
+    padding: 100px;
     list-style: none;
 }
 
-.home-info ul {
+.details-info ul {
     display: flex;
 }
 

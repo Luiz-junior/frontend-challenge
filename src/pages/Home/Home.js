@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.css';
 import api from '../../services/api';
@@ -12,6 +13,7 @@ class Home extends Component {
     }
 
     async componentDidMount() {
+        console.log(this.props)
         try {
             const response = await api.get(`/all`);
             this.setState({ countries: response.data, loading: false });    
@@ -24,13 +26,15 @@ class Home extends Component {
         return countries.map((country, index) => {
             return ( 
                 <div className="home-container" key={index}>
-                    <div className="card-countries">
-                        <img src={country.flag} />
-                        <h2>{country.name}</h2>
-                        <h4>Population: {country.population}</h4>
-                        <h4>Region: {country.region}</h4>
-                        <h4>Capital: {country.capital}</h4>
-                    </div>
+                    <Link to={`/Details/${country.name}`} >
+                        <div className="card-countries">
+                            <img src={country.flag} />
+                            <h2>{country.name}</h2>
+                            <h4>Population: {country.population}</h4>
+                            <h4>Region: {country.region}</h4>
+                            <h4>Capital: {country.capital}</h4>
+                        </div>
+                    </Link>
                 </div> 
             )
         })
@@ -48,7 +52,7 @@ class Home extends Component {
 
     searchByRegion = async (e) => {
         const value = e.target.value;
-        console.log('value', value);
+
         try {
             const response = await api.get(`/region/${value}`);
             this.setState({ countries: response.data, loading: false });    
@@ -81,7 +85,7 @@ class Home extends Component {
                         </select> 
                 </div>
 
-                <div className="container">
+                <div className="container" >
                     { this.renderCountries(countries) }
                 </div>
             </div>

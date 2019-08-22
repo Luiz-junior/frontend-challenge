@@ -1,44 +1,59 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.css';
-import flag from './belgica.jpg';
 import leftArrow from '../../assets/left-arrow.svg';
 
 const Details = props => {
+    
     return (
         <div>
-            <button className="back-button">
-                <img src={leftArrow} />
-                Back
-            </button>
-            <div className="details-container">
-                <img src={flag} />
-                <div className="details-info">
-                    <h1>Belgium</h1>
-                    <div className="list-features">
-                        <ul>
-                            <li>Native Name: Belgie</li>
-                            <li>Population: 11,319,511</li>
-                            <li>Region: Europe</li>
-                            <li>Sub Region: Western Europe</li>
-                            <li>Capital: Brussels</li>
-                        </ul>
-                        <ul>
-                            <li>Top Level Domain: be</li>
-                            <li>Curriences: Euro</li>
-                            <li>Languages: Dutch, French, German</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4>Border Countries:</h4>
-                        <ul>
-                            <li className="border-countries">France</li>
-                            <li className="border-countries">Germany</li>
-                            <li className="border-countries">Netherlands</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <Link to="/" className="back-button">
+                    <img src={leftArrow} />
+                    Back
+            </Link>
+
+            {
+                props.country.map((c, index) => {
+                    console.log(c)
+                    return (
+                        <div className="details-container" key={index}>
+                            <img src={c.flag} />
+
+                            <div className="details-info">
+                                <h1>{c.name}</h1>
+                                <div className="list-features">
+                                    <ul>
+                                        <li>Native Name: {c.nativeName}</li>
+                                        <li>Population: {c.population}</li>
+                                        <li>Region: {c.region}</li>
+                                        <li>Sub Region: {c.subregion}</li>
+                                        <li>Capital: {c.capital}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>Top Level Domain: {c.topLevelDomain}</li>
+                                        
+                                        <li>
+                                            Currencies: { c.currencies.map(curr => curr.name) } 
+                                        </li> 
+                                        <li>
+                                            Languages: { c.languages.map(lang => lang.name ) } 
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Border Countries:</h4>
+                                    <ul>
+                                        <li className="border-countries">France</li>
+                                        <li className="border-countries">Germany</li>
+                                        <li className="border-countries">Netherlands</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })
+            }
         </div>
     )
 };

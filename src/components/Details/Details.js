@@ -4,16 +4,16 @@ import './styles.css';
 import flag from './belgica.jpg';
 import leftArrow from '../../assets/left-arrow.svg';
 
-const Home = props => {
+const Details = props => {
     return (
         <div>
             <button className="back-button">
                 <img src={leftArrow} />
                 Back
             </button>
-            <div className="home-container">
+            <div className="details-container">
                 <img src={flag} />
-                <div className="home-info">
+                <div className="details-info">
                     <h1>Belgium</h1>
                     <div className="list-features">
                         <ul>
@@ -43,4 +43,4 @@ const Home = props => {
     )
 };
 
-export default Home;
+export default Details;
